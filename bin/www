@@ -26,7 +26,6 @@ var server = http.createServer(app.callback());
  */
 
 server.listen(port);
-debug('服务已启动，端口：'+port)
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -87,5 +86,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('服务已启动 ' + bind);
 }
