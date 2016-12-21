@@ -1,7 +1,7 @@
 import Koa from 'koa'
 const app = new Koa()
 import Router from 'koa-router'
-const router = Router
+const router = Router()
 import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
