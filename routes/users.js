@@ -1,7 +1,9 @@
-var router = require('koa-router')();
+import Router from 'koa-router'
+const router = Router()
 
 router.get('/', function (ctx, next) {
-  ctx.body = 'this a users response!';
-});
+  ctx.body = 'this a users response!'
+})
 
-module.exports = router;
+export default router
+
