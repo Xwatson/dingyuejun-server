@@ -9,9 +9,14 @@ import onerror from 'koa-onerror'
 import Bodyparser from 'koa-bodyparser'
 const bodyparser = Bodyparser()
 import logger from 'koa-logger'
+import mongoose from 'mongoose'
 
 import index from './routes/index'
 import users from './routes/users'
+import { mongodb } from './config'
+
+mongoose.connect(mongodb)
+mongoose.connection.on('error', console.error)
 
 // middlewares
 app.use(convert(bodyparser))
