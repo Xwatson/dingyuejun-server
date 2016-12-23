@@ -23,7 +23,7 @@ app.use(convert(json()))
 app.use(convert(logger()))
 app.use(convert(require('koa-static')(__dirname + '/public')))
 
-app.use(views(__dirname + '/views', {
+app.use(views(__dirname + '/app/views', {
   extension: 'ejs'
 }))
 
@@ -36,9 +36,6 @@ app.use(async (ctx, next) => {
 })
 
 router(app)
-
-app.use(router.routes(), router.allowedMethods())
-// response
 
 app.on('error', function(err, ctx){
   console.log(err)

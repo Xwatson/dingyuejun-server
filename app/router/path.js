@@ -9,6 +9,6 @@ import index from '../controller/index'
 
 router.get('/', index)
 
-router.get('/api/*', verify)
+router.get('/api', verify)
 
 export default router
