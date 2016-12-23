@@ -1,7 +1,5 @@
 import Koa from 'koa'
 const app = new Koa()
-import Router from 'koa-router'
-const router = Router()
 import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
@@ -11,9 +9,10 @@ const bodyparser = Bodyparser()
 import logger from 'koa-logger'
 import mongoose from 'mongoose'
 
-import index from './routes/index'
-import users from './routes/users'
+import index from './app/controller/index'
+import users from './app/controller/users'
 import { mongodb } from './config'
+import router from './app/router'
 
 mongoose.connect(mongodb)
 mongoose.connection.on('error', console.error)
@@ -36,8 +35,7 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-router.use('/', index.routes(), index.allowedMethods())
-router.use('/users', users.routes(), users.allowedMethods())
+router(app)
 
 app.use(router.routes(), router.allowedMethods())
 // response
